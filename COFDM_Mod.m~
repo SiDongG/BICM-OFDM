@@ -1,0 +1,24 @@
+function [Symbols]=COFDM_Mod(N,Block_Num,M,Coded_bits,Rate)
+S=zeros(1,length(Coded_bits)/log2(M));
+Symbols=zeros(N/(log2(M)*Rate),1,Block_Num);
+for a=1:length(S)
+    S(a)=bin2dec(num2str(Coded_bits(2*a-1:2*a+log2(M)-2)));
+end
+S2=qammod(S,M);
+if M==2
+    PSF=1;
+elseif M==4
+    PSF=2;
+elseif M==8
+    PSF=6;
+elseif M==16
+    PSF=10;
+elseif M==32
+    PSF=20;
+else
+    PSF=42;
+end
+S2=S2*sqrt(1/PSF);
+for i=1:length(Block_Num)
+    Symbols(:,:,i)=S2();
+end

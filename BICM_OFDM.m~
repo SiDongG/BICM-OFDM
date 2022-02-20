@@ -1,0 +1,5 @@
+function Ber_Snr=BICM_OFDM(N,Block_Num,P,M,Rate,L,Est)
+
+
+
+end
