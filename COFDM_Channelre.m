@@ -1,4 +1,4 @@
-function [Symbols3,H0]=COFDM_Channel(Symbols2,SNR,NN,Block_Num,L)
+function [Symbols3,H0]=COFDM_Channelre(Symbols2,SNR,NN,Block_Num,L)
 P=NN+L;
 L_C=L+1;
 h=(1/sqrt(2*(L_C)))*(randn(1,L_C)+1i*randn(1,L_C));

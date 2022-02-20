@@ -1,12 +1,12 @@
-function [Symbols4]=COFDM_FFTRE(Symbols3,F,Block_Num,P,F_inv)
-R=[zeros(F,P-F),eye(F)]; 
-Symbols4=zeros(F,1,Block_Num);
+function [Symbols4]=COFDM_FFTRE(Symbols3,NN,Block_Num,P,F_inv)
+R=[zeros(NN,P-NN),eye(NN)]; 
+Symbols4=zeros(NN,1,Block_Num);
 for a=1:Block_Num
     Symbols4(:,:,a)=R*Symbols3(:,:,a);
 end
-F=conj(F_inv);
+NN=conj(F_inv);
 
 for count=1:Block_Num
-    Symbols4(:,:,count)=F*Symbols4(:,:,count);
+    Symbols4(:,:,count)=NN*Symbols4(:,:,count);
 end
 end
